@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    
+    <style>
+        .fundo{
+            
+            font-family: sans-serif;
+            text-align: center;
+          
+        }
+        .botao{
+            font-size: 50px;
+            background-color: black;
+            width: 60px;
+            height: 70PX;
+            cursor: pointer;
+            border: none;
+            color: aliceblue;
+            margin: 3px;
+            border-radius: 2px;
+        }
+        .calculadora{
+            position: absolute;
+            background-color: rgba(134, 122, 122, 0.9);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        #resultado{
+            background-color: white;
+            width: 239px;
+            height: 25px;
+            margin: 6px;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fundo">
+    <h1>BEM VINDO</h1>    
+   <div class="calculadora">
+       <p id="resultado"> </p>
+<table>
+    <tr>
+        <td><button class="botao" onclick="apagar()">C</button></td> 
+        <td><button class="botao" onclick="voltar()"><</button></td> 
+        <td><button class="botao" onclick="inserir('/')">/</button></td>  
+        <td> <button class="botao"onclick="inserir('*')">X</button></td> 
+     </tr>
+       <tr>
+          <td><button class="botao" onclick="inserir('9')">9</button></td> 
+          <td><button class="botao" onclick="inserir('8')">8</button></td> 
+          <td><button class="botao" onclick="inserir('7')">7</button></td>  
+          <td> <button class="botao" onclick="inserir('+')">+</button></td> 
+       </tr>
+       <tr>
+         <td><button class="botao" onclick="inserir('6')">6</button></td>
+         <td><button class="botao" onclick="inserir('5')"> 5</button></td>
+         <td><button class="botao" onclick="inserir('4')"> 4</button></td> 
+         <td><button class="botao"onclick="inserir('-')"> -</button></td>
+    </tr>
+    <tr>
+        <td><button class="botao" onclick="inserir('3')">3</button></td>
+        <td><button class="botao" onclick="inserir('2')">2</button></td> 
+        <td><button class="botao" onclick="inserir('1')">1</button></td> 
+        <td rowspan="2"><button class="botao" style="height:144px;" onclick="calcular()">=</button></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button class="botao" style="width: 130px;"  onclick="inserir('0')">0</button></td>
+        <td><button class="botao" onclick="inserir('.')">.</button></td> 
+        
+    </tr>
+</table>
+   </div>
+
+</div>
+ 
+<script >
+
+    function inserir(num)
+    {
+    let operacao = document.getElementById("resultado").innerHTML;
+                   document.getElementById("resultado").innerHTML = operacao + num;
+    }
+    function apagar()
+    {
+    document.getElementById("resultado").innerHTML = "";             
+    }
+    function voltar()
+    {
+        let operacao = document.getElementById("resultado").innerHTML;
+                       document.getElementById("resultado").innerHTML = operacao.substring(0, operacao.length -1);     
+    }
+    function calcular()
+    {
+        let operacao = document.getElementById("resultado").innerHTML;
+        if(operacao){
+            document.getElementById("resultado").innerHTML = eval(operacao); 
+        }
+    }
+
+</script>
+</body>
+</html>
